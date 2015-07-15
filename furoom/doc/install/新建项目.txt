@@ -1,0 +1,2 @@
+1. package explorer中右键new->spring project
+2. 填写项目名，然后在templates中选择simple spring maven,点finish

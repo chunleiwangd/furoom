@@ -1,0 +1,66 @@
+阿里云安装
+1.安装JDK
+安装包:jdk-6u45-linux-x64-rpm.bin
+安装步骤如下：
+chmod a+x jdk-6u45-linux-x64-rpm.bin
+./jdk-6u45-linux-x64-rpm.bin
+
+2.安装Mysql
+安装包：MySQL-server-5.6.21-1.rhel5.x86_64.rpm MySQL-client-5.6.21-1.rhel5.x86_64.rpm
+安装步骤如下：
+安装mysql服务器 ：rpm -ivh MySQL-server-5.6.21-1.rhel5.x86_64.rpm  --nodeps
+cp /usr/share/mysql/my-default.cnf /etc/my.cnf
+vim my.cnf  my.cnf配置如下：
+**********************************************
+[client]  
+password        = calis123  
+port            = 3306  
+default-character-set=utf8  
+[mysqld]  
+port            = 3306  
+character_set_server=utf8  
+character_set_client=utf8  
+collation-server=utf8_general_ci  
+#(注意linux下mysql安装完后是默认：表名区分大小写，列名不区分大小写； 0：区分大小写，1：不区分大小写)  
+lower_case_table_names=1  
+#(设置最大连接数，默认为 151，MySQL服务器允许的最大连接数16384; )  
+max_connections=1000  
+[mysql]  
+default-character-set = utf8
+**********************************************
+
+启动mysql ：service mysql start  【关闭mysql : service mysql stop】
+
+安装mysql客户端 ：rpm -ivh MySQL-client-5.6.21-1.rhel5.x86_64.rpm  --nodeps
+
+修改root密码
+打开my.cnf在[Mysqld]配置段下添加： skip-grant-tables  保存退出编辑。
+重启mysql : 	service mysql stop
+			service mysql start
+登录: mysql -u root -p	回车，然后不输入密码直接回车就可登录进去
+修改root密码：	use mysql;  
+			update user set password=PASSWORD("calis111") where user='root'; 
+重启mysql : 	service mysql stop
+			service mysql start
+
+
+链接mysql ：mysql -u root -p
+Enter password:calis123
+
+如果需要重设密码的话 ： SET PASSWORD = PASSWORD('123456'); 
+
+远程访问权限：GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY 'calis123';
+
+创建UTF-8的数据库：
+CREATE DATABASE gpps DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+
+
+
+
+
+安装tomcat的时候设置tomcat的URIEncoding为UTF-8,修改conf/server.xml中的
+<Connector port="80" protocol="HTTP/1.1"
+               connectionTimeout="20000"
+               redirectPort="8443" URIEncoding="UTF-8" />
