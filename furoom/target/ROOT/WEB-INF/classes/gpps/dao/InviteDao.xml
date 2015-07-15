@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gpps.dao.IInviteDao">
+	<select id="find" parameterType="Integer" resultType="gpps.model.Invite">
+		select *
+		from Invite where id=#{id}
+	</select>
+	<select id="findByCode" resultType="gpps.model.Invite">
+		select *
+		from Invite where code=#{code}
+	</select>
+	
+	<select id="queryByAttriToAndBatchCode" resultType="gpps.model.Invite">
+		select *
+		from Invite where attributeTo=#{lenderId}
+		<if test="batchCode != null">
+            and batchCode=#{batchCode}
+        </if>
+         order by id desc;
+	</select>
+	
+	<select id="queryByAttriToAndBatchCodeAndState" resultType="gpps.model.Invite">
+		select *
+		from Invite where attributeTo=#{lenderId}
+		<if test="batchCode != null">
+            and batchCode=#{batchCode}
+        </if>
+        <if test="state != -1">
+            and state=#{state}
+        </if>
+         order by id desc;
+	</select>
+	
+	<select id="queryByBatchCode" resultType="gpps.model.Invite">
+		select *
+		from Invite 
+		<if test="batchCode != null">
+            where batchCode=#{batchCode}
+        </if>
+	</select>
+	
+	<select id="getMaxId" resultType="Integer">
+		select max(id)
+		from Invite
+	</select>
+	<insert id="create" parameterType="gpps.model.Invite"
+        useGeneratedKeys="true" keyProperty="id">
+        insert into
+        Invite(code,attributeTo,registerBy,state,batchCode)
+        values(#{code},#{attributeTo},#{registerBy},#{state},#{batchCode})
+    </insert>
+    <update id="update">
+    	update Invite set registerBy=#{userId}, state=#{state} where code=#{code}
+    </update>
+</mapper>

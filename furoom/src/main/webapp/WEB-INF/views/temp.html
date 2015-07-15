@@ -1,0 +1,23 @@
+<html>
+<head>
+<META HTTP-EQUIV="nocache" CONTENT="no-cache">
+</head>
+<body>
+<script src="js/cdn/jquery.min.js"></script>
+<script src="js/include/include.js?version=20150709"></script>
+<script>
+$(document).ready(function() {
+	
+	
+	var cuser = service.getCurrentUser();
+	
+	
+	if(cuser==null){
+		window.location.href="login.html";
+		}else{
+			window.location.href="myaccount.html";
+		}
+});
+</script>
+</body>
+</html>

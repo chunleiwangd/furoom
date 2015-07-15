@@ -1,0 +1,15 @@
+<xml>
+<ToUserName><![CDATA[template_toUser]]></ToUserName>
+<FromUserName><![CDATA[template_fromUser]]></FromUserName>
+<CreateTime>template_createTime</CreateTime>
+<MsgType><![CDATA[news]]></MsgType>
+<ArticleCount>1</ArticleCount>
+<Articles>
+<item>
+<Title><![CDATA[绑定账户请点击这里]]></Title>
+<Description><![CDATA[绑定账户以后可以轻松管理账户]]></Description>
+<PicUrl><![CDATA[http://www.zhengcaidai.com/img/loginimg.png]]></PicUrl>
+<Url><![CDATA[http://www.zhengcaidai.com/weixin_bind.html?userid=template_toUser]]></Url>
+</item>
+</Articles>
+</xml> 

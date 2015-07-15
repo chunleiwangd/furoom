@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <META HTTP-EQUIV="nocache" CONTENT="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+
+    <!-- Custom styles for this template -->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="js/cdn/html5shiv.min.js"></script>
+      <script src="js/cdn/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/include/include.js?version=20150709"></script>
+		<script src="js/tool.js"></script>
+  </head>
+
+  <body>
+
+    <div class="container">
+		
+		<div class="row" id="header" style="padding-left:0px; padding-right:0px;">
+      		<div style="margin-top:5px; padding: 10px 10px 0px 10px;">
+      		<img src="img/logo.png" style="max-width:95%; margin-top:5px;"></img>
+      		</div>
+      		<div class="col-md-12" id="usercontent" style="background-color:#999; color:white; min-height:35px; padding-top:5px;"></div>
+      	</div>
+		
+		<div class="row" style="margin-top:15px;">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:18px; font-size:20px; color:#999; text-align:center;">
+			经检测您已登录过账户【<span id="username" style="color:orange;"></span>】,您可以直接登录该账户或选择重新登录其他账号！
+		</div>
+      	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="text-align:center; margin-top:20px;">
+      		<div class="col-xs-1 col-sm-1 col-md-3 col-lg-3" style="text-align:center; margin-top:20px;">
+      		</div>
+      		<div class="col-xs-5 col-sm-5 col-md-3 col-lg-3" style="text-align:center; margin-top:20px;">
+      		<a id="login" style="cursor:pointer; text-decoration:none;"><img id="headimg" src="" style="width:60%;border:solid 5px orange;"></img><br><span id="loginId"></span></a>
+      		</div>
+      		<div class="col-xs-5 col-sm-5 col-md-3 col-lg-3" style="text-align:center; margin-top:20px;">
+      		<a id="cancel" style="cursor:pointer; text-decoration:none;"><img src="img/peoplehead.jpg" style="width:60%;border:solid 5px grey;"></img><br>重新登录</a>
+      		</div>
+      		<div class="col-xs-1 col-sm-1 col-md-3 col-lg-3" style="text-align:center; margin-top:20px;">
+      		</div>
+      		
+      		
+      	</div>
+      	<div id="content" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="font-size:20px; color:#999; text-align:center;">
+		
+		</div>
+      	</div>
+      
+      
+      
+      
+      
+
+    </div> <!-- /container -->
+
+
+    
+  </body>
+  
+  <script>
+  
+	$(document).ready(function() {
+	var rb = getQueryString('rb');
+	var loginId = localStorage.getItem("loginId");
+	var token = localStorage.getItem("token");
+	
+	var lender = service.findByLoginId(loginId);
+	
+	var name = lender.name==null?lender.loginId : lender.name;
+	
+	$('#username').html(name);
+	$('#loginId').html(name);
+	
+	if(lender.sex==0){
+		$('#headimg').attr("src", "img/manhead.jpg");
+	}else{
+		$('#headimg').attr("src", "img/womanhead.jpg");
+	}
+	
+	$('#login').click(function(e){
+		try{
+			tokenService.login(token, loginId);
+			if(rb!=null && rb!='')
+			{
+				window.location.href=rb;
+			}else{
+				window.location.href="myaccount.html?version=20150709";
+			}
+		}catch(e){
+			alert(e.message);
+			localStorage.removeItem("loginId");
+			localStorage.removeItem("token");
+		}
+	});
+	
+	$('#cancel').click(function(e){
+		if(rb!=null && rb!='')
+			{
+				window.location.href="login.html?force=1&"+rb;
+			}else{
+				window.location.href="login.html?force=1";
+			}
+	});
+})
+</script>
+  
+</html>
