@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import weixin.model.Message;
@@ -34,6 +36,17 @@ public class ConnectServlet {
 	private static Logger log = Logger.getLogger(ConnectServlet.class);
 	private static final IEasyObjectXMLTransformer xmlTransformer=new EasyObjectXMLTransformerImpl(); 
 	
+	public static Map<String, String> mapping = new HashMap<String, String>();
+	static{
+		mapping.put("myaccount", "/weixin/weixin_myaccount.html?openId=");
+		mapping.put("exchange", "/weixin/weixin_myaccountdetail.html?fid=purchase&openId=");
+		mapping.put("letter", "/weixin/weixin_myaccountdetail.html?fid=letter&openId=");
+		mapping.put("bind", "/weixin/weixin_bind.html?fid=letter&openId=");
+		mapping.put("unbind", "/weixin/weixin_unbind.html?fid=letter&openId=");
+	}
+	public static final String errorurl = "/weixin/weixin_error.html";
+	
+	
 	@Autowired
 	IBindService bindService;
 	
@@ -47,7 +60,7 @@ public class ConnectServlet {
 	ICentralService centralService;
 	
 	@RequestMapping(value = { "/weixin/connect" })
-	public void completeThirdPartyRegist(HttpServletRequest req, HttpServletResponse resp) {
+	public void connect(HttpServletRequest req, HttpServletResponse resp) {
 		try{
 			String echostr = getParam(req, "echostr");
 			String signature = getParam(req, "signature");
@@ -66,6 +79,33 @@ public class ConnectServlet {
 			
 		}catch(Exception e){
 			log.error(e.getMessage());
+		}
+	}
+	
+	@RequestMapping(value = {"/weixin/controller/{type}"})
+	public void toControl(HttpServletRequest req, HttpServletResponse resp,  @PathVariable("type") String type){
+		try{
+		String code = getParam(req, "code");
+		if(code==null||"".equals(code)){
+			throw new Exception("从公众平台返回的code为空！");
+		}
+		String openId = centralService.getOpenId(code);
+		if(openId==null||"".equals(openId)){
+			throw new Exception("用code获取的openId为空！");
+		}
+		
+		String url = mapping.get(type);
+		if(url==null || "".equals(url)){
+			throw new Exception("返回的操作界面类型有错误！");
+		}
+		resp.sendRedirect(url+openId); 
+		}catch(Exception e){
+			log.error(e.getMessage());
+			try{
+				resp.sendRedirect(errorurl);
+			}catch(Exception f){
+				
+			}
 		}
 	}
 	

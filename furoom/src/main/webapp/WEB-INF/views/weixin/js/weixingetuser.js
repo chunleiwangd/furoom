@@ -17,6 +17,6 @@ if(openId!=null && openId!=''){
 			window.location.href="weixin_bind.html?openId="+openId;
 		}
 	}catch(e){
-		window.location.href="weixin_bind.html?openId="+openId;
+		alert(e.message);
 	}
 }

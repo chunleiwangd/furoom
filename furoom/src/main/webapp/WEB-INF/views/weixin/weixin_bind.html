@@ -6,34 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
     
 
     <!-- Custom styles for this template -->
-    <link href="css/signin/signin.css" rel="stylesheet">
-    <script src="js/ie-emulation-modes-warning.js"></script>
+    <link href="../css/signin/signin.css" rel="stylesheet">
+    <script src="../js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="js/cdn/html5shiv.min.js"></script>
-      <script src="js/cdn/respond.min.js"></script>
+      <script src="../js/cdn/html5shiv.min.js"></script>
+      <script src="../js/cdn/respond.min.js"></script>
     <![endif]-->
     
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-	<script src="js/include/include.js?version=20150709"></script>
-	<script src="js/weixingetuser.js?version=20150708"></script>
-	<script src="js/tool.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+	<script src="../js/include/include.js?version=20150709"></script>
+	<script src="../js/tool.js"></script>
+	
+	<script>
+	var openId = getQueryString("openId");
+	if(openId==null || openId==''){
+		alert('参数错误！');
+		window.location.href="weixin_error.html";
+	}
+		try{
+			var flag = bindService.isBind(openId);
+			if(flag)
+			{
+				window.location.href="weixin_myaccount.html?openId="+openId;
+			}
+		}catch(e){
+			alert(e.message);
+		}
+	</script>
+	
   </head>
 
   <body>
 
     <div class="container">
 		
-		<div class="row" id="header" style="padding-left:0px; padding-right:0px;">
+		<div class="row" id="header" style="padding-left:0px; padding-right:0px; height:15px;">
       
       	</div>
-		
+		<div class="row" style="font-size:20px; color:#999; text-align:center;">
+			账户绑定
+		</div>
 		<div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left:30px; padding-right:30px;">
       	<div class="row">
@@ -87,14 +106,6 @@
 
   
 $(document).ready(function() {
-	var code = getQueryString('userid');
-	var userid = getQueryString('userid');
-	
-	if(userid==null || userid==''){
-		alert('参数错误！');
-		return;
-	}
-	
 	var src="../../login/graphValidateCode?t="+Math.random();
 	$('img#J-checkcode-img').attr('src', src);
 	
@@ -126,8 +137,8 @@ $(document).ready(function() {
 			}
 			
 			try{
-				bindService.bind(username, password, userid, validate);
-				window.location.href="weixin_myaccount.html?userid="+userid;
+				bindService.bind(username, password, openId, validate);
+				window.location.href="weixin_myaccount.html?openId="+openId;
 			}catch(e){
 				alert(e.message);
 				$('input#password_input').val('');

@@ -9,37 +9,37 @@
 <title>政采贷>我的帐户</title>
 
 <!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
 
-<link rel="stylesheet" type="text/css" href="css/gpps/lufax-main.css">
-    <link rel="stylesheet" type="text/css" href="css/gpps/new-lufax.css">
-    <link rel="stylesheet" type="text/css" href="css/gpps/productlist.css">
+<link rel="stylesheet" type="text/css" href="../css/gpps/lufax-main.css">
+    <link rel="stylesheet" type="text/css" href="../css/gpps/new-lufax.css">
+    <link rel="stylesheet" type="text/css" href="../css/gpps/productlist.css">
 
-<link href="css/mine.css" rel="stylesheet">
-<link href="css/plugins/dataTables/jquery.dataTables.css" rel="stylesheet">
+<link href="../css/mine.css" rel="stylesheet">
+<link href="../css/plugins/dataTables/jquery.dataTables.css" rel="stylesheet">
 
-<link href="css/plist/a.css" rel="stylesheet">
-<link href="css/myaccount/myaccount.css" rel="stylesheet">
+<link href="../css/plist/a.css" rel="stylesheet">
+<link href="../css/myaccount/myaccount.css" rel="stylesheet">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
-      <script src="js/cdn/html5shiv.min.js"></script>
-      <script src="js/cdn/respond.min.js"></script>
+      <script src="../js/cdn/html5shiv.min.js"></script>
+      <script src="../js/cdn/respond.min.js"></script>
     <![endif]-->
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/jquery.min.js"></script>
+<script src="../js/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 
 
-	<script src="js/jquery.dataTables.js"></script>
-	<script src="js/tool.js"></script>
+	<script src="../js/jquery.dataTables.js"></script>
+	<script src="../js/tool.js"></script>
 	
-	<script src="js/include/include.js?version=20150709"></script>
+	<script src="../js/include/include.js?version=20150709"></script>
 <script src="js/weixingetuser.js?version=20150709"></script>
-    <script src="js/data.js"></script>
-    <script src="js/myaccount.js?version=20150709"></script>
+    <script src="../js/data.js"></script>
+    <script src="../js/myaccount.js?version=20150709"></script>
     
     <script>
     var name = "";
@@ -90,7 +90,7 @@ a.accordion-toggle {
 									<span id="welcome" style="padding-left:5px; display:inline;"></span>
 								</div>
 								<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding-left:0px; padding-right:5px; text-align:right">
-									<a href="resetpsw.html" style="color:#999;">修改密码</a> 
+									<a href="weixin_resetpsw.html" id="resetpsw" style="color:#999;">修改密码</a> 
 								</div>
 							</div>
 							
@@ -184,53 +184,15 @@ a.accordion-toggle {
 								<div class="btn-group btn-group-lg  btn-group-justified"
 									style="padding-bottom: 5px; margin-top: 10px;">
 									<div class="btn-group">
-										<a class="btn btn-warning btn-lg" href="recharge.html" target="_blank" id="recharge">充值</a>
+										<a class="btn btn-warning btn-lg" href="/recharge.html" target="_blank" id="recharge">充值</a>
 									</div>
 									<div class="btn-group">
-										<a class="btn btn-default btn-lg" href="cashout.html" target="_blank" id="cashout">提现</a>
+										<a class="btn btn-default btn-lg" href="/cashout.html" target="_blank" id="cashout">提现</a>
 									</div>
 								</div>
 							</div>
 						</div>
 						
-						<div class="hidden-xs hidden-sm col-md-3 col-lg-3" style="padding-left:0px; padding-right:0px;">
-							<div class="col-xs-12 col-md-12" style="padding-top: 10px; text-align:center; font-size:20px; font-weight:bold; color:#999;">
-								投资前准备
-							</div>
-							<div class="col-xs-4 col-md-4" style="padding-top: 10px;">
-								<img src="img/people.png" style="width: 40px; height: 40px;"></img>
-								<div
-									style="color: green; font-size: 12px; font-weight: bold; margin-top: 5px; z-index: 1000">
-									 平台注册
-								</div>
-							</div>
-							<div class="col-xs-4 col-md-4" style="padding-top: 10px;">
-								<a id="identity" title="点击绑定身份证" href="register2.html"><img
-									id="identity" src="img/identity.jpg"
-									style="width: 40px; height: 40px;"></img></a>
-								<div id="identity"
-									style="color: red; font-size: 12px; font-weight: bold; margin-top: 5px;">
-									身份证绑定
-								</div>
-							</div>
-							<div class="col-xs-4 col-md-4" style="padding-top: 10px;">
-								<a id="spsw" title="点击开通第三方账户" href="#" data-sk='none'><img
-									id="spsw" src="img/qdd.jpg"
-									style="width: 40px; height: 40px;"></img></a>
-								<div id="spsw"
-									style="color: red; font-size: 12px; font-weight: bold; margin-top: 5px;">
-									 开通第三方
-								</div>
-								<div id="spswformdiv" style="display:none">
-								</div>
-							</div>
-							<div class="col-xs-12 col-md-12" style="padding-top: 35px; text-align:center;">
-								<a class="btn btn-warning btn-lg" href="productlist.html" id="invest" style="width:80%">马上投资</a>
-							</div>
-							
-							<div id="cardBindingformdiv" style="display:none;"></div>
-							
-						</div>
 						<div style="clear: both;"></div>
 					</div>
 				</div>
@@ -243,12 +205,6 @@ a.accordion-toggle {
 
 			</div>
 		</div>
-		
-		
-		<div class="row foot" id="footer" style="border: #eee solid 1px; background:#eee; min-height:120px; font-size:13px; margin-top:5px; padding-left:0px; padding-right:0px;">
-
-	</div>
-		
 		
 	</div>
 	
@@ -424,8 +380,6 @@ a.accordion-toggle {
 					</div>
 </textarea>
 
-
-		<script src="js/foot.js"></script>
 	<script>
 		$(document).ready(function() {
 							var fid = getQueryString('fid');
@@ -437,6 +391,7 @@ a.accordion-toggle {
 									alert(e.message);
 								}
 
+								$('a#resetpsw').attr('href', 'weixin_resetpsw.html?openId='+openId);
 								
 							$('button#letter').html('站内信('+lettercount+')');
 							
@@ -475,11 +430,6 @@ a.accordion-toggle {
 								$('#idcard').html(identity);
 								$('#bindidcard').html('已绑定');
 								$('#bindidcard').attr('disabled', 'disabled');
-								$('img#identity').attr('src', 'img/identity.png').attr('title', '身份证已绑定').attr('disabled', 'disabled');
-								$('a#identity').attr('href', '#');
-								$('div#identity')
-										.css('color', 'green')
-										.html('身份证绑定')
 							}else{
 								$('#idcard').html('暂未绑定');
 								$('#bindidcard').click(function(){
@@ -494,13 +444,6 @@ a.accordion-toggle {
 									var url = tpservice.getUrl();
 									window.open(url+'?accountname='+spsw);
 								})
-								$('img#spsw').attr('src', 'img/qdd.png').attr('title', '第三方账户已开通').attr('disabled', 'disabled');
-								$('a#spsw').attr('href', '#').attr('data-sk',
-										'done');
-								$('div#spsw')
-										.css('color', 'green')
-										.html(
-												'开通第三方')
 							}else{
 								$('#tpaccount').html("暂未开通");
 								$('#loginmmm').html('马上注册');
@@ -564,7 +507,7 @@ a.accordion-toggle {
 							if (spsw != null && spsw != "") {
 							$('button#rebind').click(
 									function(e) {
-                                  		window.open("bankedit.html");
+                                  		window.open("/bankedit.html");
 									});
 							
 							}
@@ -628,14 +571,6 @@ a.accordion-toggle {
 							else
 								$('#submit-all').trigger('click');
 							
-							
-							$('#success').click(function(e){
-									window.location.href = "myaccount.html?fid=submit&sid=submit-toafford";
-							});
-							
-							$('#fail').click(function(e){
-									window.location.href = "myaccount.html?fid=submit&sid=submit-toafford";
-							});
 							
 							$('#inner_letter').click(function(e){
 								$('#letter-unread-mycenter').trigger('click');

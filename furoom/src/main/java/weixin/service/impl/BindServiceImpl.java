@@ -145,6 +145,37 @@ public class BindServiceImpl implements IBindService {
 	
 	
 	@Override
+	public Integer getCurrentUserInner(String userid) throws Exception{
+		
+		HttpSession session=lenderService.getCurrentSession();
+		if(session==null)
+			return null;
+		Object user=session.getAttribute(ILoginService.SESSION_ATTRIBUTENAME_USER);
+		
+		if(user!=null && user instanceof Lender){
+			return ((Lender)user).getId();
+			
+		}else{
+			List<Binding> bindings = bindingDao.findByTypeAndValueAndStateAndUserId(Binding.TYPE_OPENID, userid, Binding.STATE_VALID, null);
+			
+			if(bindings==null || bindings.isEmpty()){
+				log.info("非法的参数【openId="+userid+"】，获取用户不正确");
+				throw new Exception("非法的参数，获取用户不正确");
+			}
+			user = lenderDao.find(bindings.get(0).getUserid());
+			if(user==null){
+				log.info("非法的参数【lenderId="+bindings.get(0).getUserid()+"】，获取用户不正确");
+				throw new Exception("非法的参数，获取用户不正确");
+			}
+			Lender lender = (Lender)user;
+			if(lender.getCardBindingId()!=null)
+				lender.setCardBinding(cardBindingDao.find(lender.getCardBindingId()));	
+			session.setAttribute(ILoginService.SESSION_ATTRIBUTENAME_USER, lender);
+			return lender.getId();
+		}
+	}
+	
+	@Override
 	public Map<String, Object> getCurrentUser(String userid) throws Exception{
 		Map<String, Object> res = new HashMap<String, Object>();
 		
@@ -161,13 +192,14 @@ public class BindServiceImpl implements IBindService {
 			List<Binding> bindings = bindingDao.findByTypeAndValueAndStateAndUserId(Binding.TYPE_OPENID, userid, Binding.STATE_VALID, null);
 			
 			if(bindings==null || bindings.isEmpty()){
-				log.info("非法的参数【openId="+userid+"】，获取用户不正确");
-				throw new Exception("非法的参数，获取用户不正确");
+				log.info("用户尚未绑定【openId="+userid+"】，获取不成功！");
+				return null;
 			}
 			user = lenderDao.find(bindings.get(0).getUserid());
 			if(user==null){
-				log.info("非法的参数【lenderId="+bindings.get(0).getUserid()+"】，获取用户不正确");
-				throw new Exception("非法的参数，获取用户不正确");
+				
+				log.info("用户绑定不正确【lenderId="+bindings.get(0).getUserid()+"】，获取不成功！");
+				return null;
 			}
 			Lender lender = (Lender)user;
 			if(lender.getCardBindingId()!=null)

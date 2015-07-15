@@ -11,12 +11,14 @@ public interface IBindService {
 	public static final String SESSION_ATTRIBUTENAME_GRAPHVALIDATECODE="graphValidateCode";//图形验证码在Session中的KEY常量
 	public static final String PASSWORDSEED="PASSWORDSEED";
 	
-	public boolean isBind(String userid);
+	public boolean isBind(String openId);
 	
-	public void bind(String username, String password, String userid, String validate) throws Exception;
-	public void unbind(String userid);
+	public void bind(String username, String password, String openId, String validate) throws Exception;
+	public void unbind(String openId);
 	
-	public String getAccountMessage(String userid) throws Exception;
+	public String getAccountMessage(String openId) throws Exception;
 	
-	public Map<String, Object> getCurrentUser(String userid) throws Exception;
+	public Map<String, Object> getCurrentUser(String openId) throws Exception;
+	
+	public Integer getCurrentUserInner(String openId) throws Exception;
 }
