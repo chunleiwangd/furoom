@@ -15,6 +15,7 @@ public class Test {
 	static IBindService bindService = context.getBean(IBindService.class);
 	public static void main(String args[]) throws Exception{
 		System.out.println(central.getToken());
+		
 		System.exit(0);
 //		Map<String, Object> res = bindService.getCurrentUser("oL_gTswxLjhXj30coE4-3ALIjGHw");
 //		
