@@ -15,7 +15,7 @@
 		<property name="ignoreUnresolvablePlaceholders" value="true" />
 		<property name="locations">
 			<list>
-				<value>file:/root/install/apache-tomcat-7.0.56/webapps/ROOT/WEB-INF/spring/conf.properties</value>
+				<value>file:src/main/webapp/WEB-INF/spring/conf.properties</value>
 			</list>
 		</property>
 	</bean>
@@ -27,12 +27,12 @@
 		<property name="configLocation" value="classpath:StaticRolesConfig.xml"></property>
 	</bean>
 	<bean id="accessoryTransferServlet" class="gpps.servlet.AccessoryTransferServlet">
-        <property name="officalDir" value="file:/root/install/data/officialDir"></property>
-        <property name="tempDir" value="file:/root/install/data/tempDir"></property>
-        <property name="contractDir" value="file:/root/install/data/contractDir"></property>
+        <property name="officalDir" value="file:d:/test/officalDir"></property>
+        <property name="tempDir" value="file:d:/test/tempDir"></property>
+        <property name="contractDir" value="file:d:/test/contractDir"></property>
     </bean>
     <bean id="contractService" class="gpps.service.impl.ContractServiceImpl">
-        <property name="contractDir" value="file:/root/install/data/contractDir"></property>
+        <property name="contractDir" value="file:d:/test/contractDir"></property>
     </bean>
     <bean id="chinanprSupportService" class="gpps.inner.service.impl.InnerThirdPaySupportServiceImpl">
         <property name="url" value="${pay.url}"></property>
