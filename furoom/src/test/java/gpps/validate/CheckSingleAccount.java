@@ -33,8 +33,8 @@ public class CheckSingleAccount {
 	private static final String NEWLINE="\r\n";
 	public static void main(String args[]) throws Exception{
 		
-		Integer[] lenderIds = {12400,12401,12402,12403,12404};
-		Integer[] borrowerIds = {12400, 12401,12402};
+		Integer[] lenderIds = {68, 16, 2, 101, 39, 96, 8, 9, 199, 57, 14, 30};
+		Integer[] borrowerIds = {3};
 		
 		
 		StringBuilder sBuilder = new StringBuilder();
