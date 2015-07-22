@@ -31,6 +31,8 @@
 			if(where.indexOf("myaccount")!=-1 || where.indexOf("baccount.html")!=-1)
 			{
 				window.location.href = "login.html?force=1";
+			}else if(where===null || where==='' || where.indexOf("quit")!=-1){
+				window.location.href = "login.html";
 			}
 			else{
 		    	window.location.href = where;
@@ -89,7 +91,6 @@
   
   <script>
 	$(document).ready(function() {
-	var where =document.referrer;
 	var loginId = localStorage.getItem("loginId");
 	var token = localStorage.getItem("token");
 	

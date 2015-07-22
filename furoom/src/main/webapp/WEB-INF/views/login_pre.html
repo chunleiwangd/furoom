@@ -23,6 +23,16 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/include/include.js?version=20150709"></script>
 		<script src="js/tool.js"></script>
+	<script>
+	var rb = getQueryString('rb');
+	var loginId = localStorage.getItem("loginId");
+	var token = localStorage.getItem("token");
+	
+	
+	if(loginId===null || loginId===''){
+		window.location.href="login.html";
+	}
+	</script>
   </head>
 
   <body>
@@ -73,11 +83,13 @@
   <script>
   
 	$(document).ready(function() {
-	var rb = getQueryString('rb');
-	var loginId = localStorage.getItem("loginId");
-	var token = localStorage.getItem("token");
 	
 	var lender = service.findByLoginId(loginId);
+	
+	if(lender===null){
+		window.location.href="login.html";
+	}
+	
 	
 	var name = lender.name==null?lender.loginId : lender.name;
 	
