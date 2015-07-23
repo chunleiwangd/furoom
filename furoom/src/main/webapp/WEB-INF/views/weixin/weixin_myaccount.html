@@ -44,7 +44,7 @@
     <script>
     var name = "";
     if (usertype!='lender') {
-		window.location.href = "weixin_unlogin.html?code="+code+"&openId="+openId;
+		window.location.href = "weixin_error.html";
 	}
 	else {
 		name = user.name == null ? user.loginId : user.name;
@@ -90,7 +90,7 @@ a.accordion-toggle {
 									<span id="welcome" style="padding-left:5px; display:inline;"></span>
 								</div>
 								<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="padding-left:0px; padding-right:5px; text-align:right">
-									<a href="weixin_resetpsw.html" id="resetpsw" style="color:#999;">修改密码</a> 
+									<a href="javascript:void(0);" value="weixin_resetpsw.html" id="resetpsw" style="color:#999;">修改密码</a> 
 								</div>
 							</div>
 							
@@ -184,10 +184,10 @@ a.accordion-toggle {
 								<div class="btn-group btn-group-lg  btn-group-justified"
 									style="padding-bottom: 5px; margin-top: 10px;">
 									<div class="btn-group">
-										<a class="btn btn-warning btn-lg" href="/recharge.html" target="_blank" id="recharge">充值</a>
+										<a class="btn btn-warning btn-lg" href="javascript:void(0);" value="/recharge.html" id="recharge">充值</a>
 									</div>
 									<div class="btn-group">
-										<a class="btn btn-default btn-lg" href="/cashout.html" target="_blank" id="cashout">提现</a>
+										<a class="btn btn-default btn-lg" href="javascript:void(0);" value="/cashout.html" id="cashout">提现</a>
 									</div>
 								</div>
 							</div>
@@ -214,8 +214,7 @@ a.accordion-toggle {
 			<div class="col-xs-12 col-md-4">
 						<div class="news-notice sidebar-panels"
 				style="margin-left: 15px; margin-right: 15px;">
-							<a href="weixin_myaccountdetail.html?fid=mycenter" target="_blank"
-					class="news-notice-head clearfix"> 
+							<a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=mycenter" class="news-notice-head clearfix"> 
 							<span class="info">
 								会员中心
 							<!--#
@@ -235,11 +234,11 @@ a.accordion-toggle {
 
 							<div class="news-notice-body">
 								<ul class="news-notice-list faq-list" id="cjquestion">
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=mycenter&sid=my-score" target="_blank">积分+-message.get('grade')-+分，等级level+-message.get('level')-+</a></li>
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=mycenter&sid=invite-view" target="_blank">我的邀请码</a></li>
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=mycenter&sid=letter-unread-mycenter" target="_blank">站内信<span style="color:red; font-size:18px;">+-message.get('letters_unread')-+</span>条未读</a></li>
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=mycenter&sid=question-view" target="_blank">我的问题+-message.get('helps')-+条</a></li>
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=mycenter&sid=my-activity" target="_blank">我的活动+-message.get('activitys')-+条</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=mycenter&sid=my-score">积分+-message.get('grade')-+分，等级level+-message.get('level')-+</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=mycenter&sid=invite-view">我的邀请码</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=mycenter&sid=letter-unread-mycenter">站内信<span style="color:red; font-size:18px;">+-message.get('letters_unread')-+</span>条未读</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=mycenter&sid=question-view">我的问题+-message.get('helps')-+条</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=mycenter&sid=my-activity">我的活动+-message.get('activitys')-+条</a></li>
 								</ul>
 							</div>
 						</div>
@@ -248,8 +247,7 @@ a.accordion-toggle {
 					<div class="col-xs-12 col-md-4">
 						<div class="news-notice sidebar-panels"
 				style="margin-left: 15px; margin-right: 15px;">
-							<a href="weixin_myaccountdetail.html?fid=submit" target="_blank"
-					class="news-notice-head clearfix"> 
+							<a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=submit" class="news-notice-head clearfix"> 
 							<span class="info">
 							投资查看
 							<!--#
@@ -270,11 +268,11 @@ a.accordion-toggle {
 							<div class="news-notice-body">
 								<ul class="news-notice-list faq-list" id="cjquestion" style="padding-right: 10px;">
 									<!-- <li><b></b><a href="myaccountdetail.html?fid=submit&sid=submit-all" target="_blank">全部+-message.get('submit_all')-+条</a></li> -->
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=submit&sid=submit-toafford" target="_blank">待支付<span style="color:red; font-size:18px;">+-message.get('submit_waitforpay')-+</span>条</a></li>
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=submit&sid=submit-subscribe-toafford" target="_blank">预约完成待支付<span style="color:red; font-size:18px;">+-message.get('submit_subscribeforpay')-+</span>条</a></li>
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=submit&sid=submit-payback" target="_blank">还款中+-message.get('submit_paying')-+条</a></li>
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=submit&sid=submit-done" target="_blank">还款完毕+-message.get('submit_done')-+条</a></li>
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=submit&sid=submit-retreat" target="_blank">已退订+-message.get('submit_retreat')-+条</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=submit&sid=submit-toafford">待支付<span style="color:red; font-size:18px;">+-message.get('submit_waitforpay')-+</span>条</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=submit&sid=submit-subscribe-toafford">预约完成待支付<span style="color:red; font-size:18px;">+-message.get('submit_subscribeforpay')-+</span>条</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=submit&sid=submit-payback">还款中+-message.get('submit_paying')-+条</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=submit&sid=submit-done">还款完毕+-message.get('submit_done')-+条</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=submit&sid=submit-retreat">已退订+-message.get('submit_retreat')-+条</a></li>
 								</ul>
 							</div>
 						</div>
@@ -283,18 +281,17 @@ a.accordion-toggle {
 					<div class="col-xs-12 col-md-4">
 						<div class="news-notice sidebar-panels"
 									style="margin-left: 15px; margin-right: 15px;">
-							<a href="weixin_myaccountdetail.html?fid=cash" target="_blank"
-					class="news-notice-head clearfix"> <span class="info">资金查看</span>
+							<a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=cash" class="news-notice-head clearfix"> <span class="info">资金查看</span>
 								<span class="more">&gt;</span>
 							</a>
 
 							<div class="news-notice-body">
 								<ul class="news-notice-list faq-list" id="cjquestion" style="padding-right: 10px;">
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=cash&sid=cash-all" target="_blank">全部+-message.get('cash_total')-+笔</a></li>
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=cash&sid=cash-recharge" target="_blank">充值+-message.get('cash_recharge')-+笔</a></li>
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=cash&sid=cash-withdraw" target="_blank">提现+-message.get('cash_withdraw')-+笔</a></li>
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=cash&sid=cash-invest" target="_blank">投标+-message.get('cash_financing')-+笔</a></li>
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=cash&sid=cash-receive" target="_blank">回款+-message.get('cash_payback')-+笔</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=cash&sid=cash-all">全部+-message.get('cash_total')-+笔</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=cash&sid=cash-recharge">充值+-message.get('cash_recharge')-+笔</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=cash&sid=cash-withdraw">提现+-message.get('cash_withdraw')-+笔</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=cash&sid=cash-invest">投标+-message.get('cash_financing')-+笔</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=cash&sid=cash-receive">回款+-message.get('cash_payback')-+笔</a></li>
 								</ul>
 							</div>
 						</div>
@@ -303,15 +300,14 @@ a.accordion-toggle {
 					<div class="col-xs-12 col-md-4">
 						<div class="news-notice sidebar-panels"
 				style="margin-left: 15px; margin-right: 15px;">
-							<a href="weixin_myaccountdetail.html?fid=payback" target="_blank"
-					class="news-notice-head clearfix"> <span class="info">还款查看</span>
+							<a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=payback" class="news-notice-head clearfix"> <span class="info">还款查看</span>
 								<span class="more">&gt;</span>
 							</a>
 
 							<div class="news-notice-body">
 								<ul class="news-notice-list faq-list" id="cjquestion" style="padding-right: 10px;">
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=payback&sid=payback-to" target="_blank">待回款笔数+-message.get('pbs_waitforrepay')-+笔</a></li>
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=payback&sid=payback-have" target="_blank">已回款笔数+-message.get('pbs_finishrepay')-+笔</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=payback&sid=payback-to">待回款笔数+-message.get('pbs_waitforrepay')-+笔</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=payback&sid=payback-have">已回款笔数+-message.get('pbs_finishrepay')-+笔</a></li>
 								</ul>
 							</div>
 						</div>
@@ -319,8 +315,7 @@ a.accordion-toggle {
 					<div class="col-xs-12 col-md-4">
 						<div class="news-notice sidebar-panels"
 								style="margin-left: 15px; margin-right: 15px;">
-							<a href="weixin_myaccountdetail.html?fid=letter" target="_blank"
-												class="news-notice-head clearfix"> 
+							<a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=letter" class="news-notice-head clearfix"> 
 							<span class="info">
 								站内信
 							<!--#
@@ -340,8 +335,8 @@ a.accordion-toggle {
 
 							<div class="news-notice-body">
 								<ul class="news-notice-list faq-list" id="cjquestion">
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=letter&sid=letter-unread" target="_blank">未读<span style="color:red; font-size:18px;">+-message.get('letters_unread')-+</span>条</a></li>
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=letter&sid=letter-readed" target="_blank">已读+-message.get('letters_readed')-+条</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=letter&sid=letter-unread">未读<span style="color:red; font-size:18px;">+-message.get('letters_unread')-+</span>条</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=letter&sid=letter-readed">已读+-message.get('letters_readed')-+条</a></li>
 								</ul>
 							</div>
 						</div>
@@ -351,8 +346,7 @@ a.accordion-toggle {
 					<div class="col-xs-12 col-md-4">
 						<div class="news-notice sidebar-panels"
 								style="margin-left: 15px; margin-right: 15px;">
-							<a href="weixin_myaccountdetail.html?fid=purchase" target="_blank"
-												class="news-notice-head clearfix" style="background:yellow;"> 
+							<a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=purchase" class="news-notice-head clearfix" style="background:yellow;"> 
 							<span class="info">
 								债权出售/购买
 							<!--#
@@ -372,8 +366,8 @@ a.accordion-toggle {
 
 							<div class="news-notice-body">
 								<ul class="news-notice-list faq-list" id="cjquestion">
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=purchase&sid=purchase" target="_blank">可购买<span style="color:red; font-size:18px;">+-message.get('can_purchase')-+</span>条</a></li>
-									<li><b></b><a href="weixin_myaccountdetail.html?fid=purchase&sid=purchaseback" target="_blank">可出售<span style="color:red; font-size:18px;">+-message.get('submit_paying')-+</span>条</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=purchase&sid=purchase">可购买<span style="color:red; font-size:18px;">+-message.get('can_purchase')-+</span>条</a></li>
+									<li><b></b><a href="javascript:void(0);" value="weixin_myaccountdetail.html?fid=purchase&sid=purchaseback">可出售<span style="color:red; font-size:18px;">+-message.get('submit_paying')-+</span>条</a></li>
 								</ul>
 							</div>
 						</div>
@@ -382,21 +376,17 @@ a.accordion-toggle {
 
 	<script>
 		$(document).ready(function() {
-							var fid = getQueryString('fid');
-							var sid = getQueryString('sid');
 							
 							try{
 								var message = myaccountService.getLAccountMessage();
 								}catch(e){
 									alert(e.message);
 								}
-
-								$('a#resetpsw').attr('href', 'weixin_resetpsw.html?openId='+openId);
 								
 							$('button#letter').html('站内信('+lettercount+')');
 							
 							
-							$('#welcome').html(greet() + name+'<a href="weixin_myaccountdetail.html?fid=mycenter&sid=letter-unread-mycenter" target="_blank" id="inner_letter" style="color:#999;"><span class="glyphicon glyphicon-envelope" style="margin-left:10px; color=red"></span>&nbsp;'+lettercount+'</a>');
+							$('#welcome').html(greet() + name+'<a href="weixin_myaccountdetail.html?fid=mycenter&sid=letter-unread-mycenter&openId='+openId+'" target="_blank" id="inner_letter" style="color:#999;"><span class="glyphicon glyphicon-envelope" style="margin-left:10px; color=red"></span>&nbsp;'+lettercount+'</a>');
 							
 
 							$('#total').html(message.get('total').value);
@@ -423,6 +413,20 @@ a.accordion-toggle {
 							ctx.message = message;
 							ejs.renderComplexNode("#messagearea_template", "#messagearea", ctx);
 							
+							
+							
+							$('a').click(function(e){
+								var hr = $(this).attr('value');
+								
+								
+								
+								if(hr.indexOf('?')!==-1)
+								hr = hr+'&openId='+openId;
+								else
+									hr = hr+"?openId="+openId;
+								
+								window.open(hr);
+							});
 
 
 							var identity = message.get('identityCard');
