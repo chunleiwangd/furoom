@@ -33,7 +33,7 @@ public class LoginServlet {
 	public void entry(HttpServletRequest req, HttpServletResponse resp)
 	{
 		try {
-			resp.sendRedirect("/index.html?version=20150709");
+			resp.sendRedirect("/index.html");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
