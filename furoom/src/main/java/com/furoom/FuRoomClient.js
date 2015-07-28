@@ -954,7 +954,7 @@ if (typeof FuRoomClient == "undefined"){
 	};
 	
 	FuRoomClient.BatchCall = function(ctx, url){
-		var bs = FuRoomClient.getRemoteProxy('/furoom/todo.remote.batch.IEasyBatchService');
+		var bs = FuRoomClient.getRemoteProxy('/furoom/com.furoom.remote.batch.IEasyBatchService');
 		if (url != null){
 			bs = FuRoomClient.cloneWithNewTarget(bs,url);
 		}
@@ -964,7 +964,7 @@ if (typeof FuRoomClient == "undefined"){
 		this.calls = [];
 		this.add = function(k,  s, m, args){
 			this.calls.push({
-			_t_:'todo.remote.batch.SingleRequest',
+			_t_:'com.furoom.remote.batch.SingleRequest',
 			service: s,
 			method: m,
 			args: args
@@ -992,7 +992,7 @@ if (typeof FuRoomClient == "undefined"){
 	
 }
 
-FuRoomClient._remoteProxyRegisterFromServer("/furoom/todo.remote.batch.IEasyBatchService",{_t_: "todo.remote.Response",_i_:0,id:"\/todo\/todo.remote.batch.IEasyBatchService",result:[{_t_: "todo.remote.MethodDescriptor",_i_:1,name:"batchCall",params:[{_t_: "todo.remote.ParamDescriptor",_i_:2,name:"0",type:"[Ltodo.remote.batch.SingleRequest;"}],returnType:"[Ljava.lang.Object;"}]});
+FuRoomClient._remoteProxyRegisterFromServer("/furoom/com.furoom.remote.batch.IEasyBatchService",{_t_: "com.furoom.support.ServiceResponse",_i_:0,id:"\/furoom\/com.furoom.remote.batch.IEasyBatchService",result:[{_t_: "com.furoom.support.MethodDescriptor",_i_:1,name:"batchCall",params:[{_t_: "com.furoom.support.ParamDescriptor",_i_:2,name:"0",type:"[Lcom.furoom.remote.batch.SingleRequest;"}],returnType:"[Ljava.lang.Object;"}]});
 
 (function(){
     

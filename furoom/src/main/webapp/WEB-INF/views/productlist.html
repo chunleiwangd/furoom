@@ -366,7 +366,28 @@
         	 header('productlist');
         	 var sid = getQueryString('sid');
         	 
-        	 var series = seriesService.findAll();
+        	 
+        		var myctx = FuRoomClient.newContext(); 
+        		var bs =  new FuRoomClient.BatchCall(myctx);
+        		
+        		bs.add('series','gpps.cache.service.ICacheService','findAllSeries'); 
+        		
+        		bs.add('cjquestions', 'gpps.cache.service.ICacheService', 'findPublicHelps',[1]);
+        		
+        		bs.add('newhelps', 'gpps.cache.service.ICacheService', 'findPublicHelps', [0]);
+
+        		var myrts = new Array();
+        		try{
+        		myrts = bs.execute();//这里的myrts和构建BatchCall时候传入的ctx一样。 
+        		
+        		}catch(e){
+        			alert(e.message);
+        		}
+        	 
+        	 
+        	 
+        	 
+        	 var series = myrts['series'];
         	 var li1 = $('<li class="active"></li>');
         	 var a1 = $('<a href="javascript:void(0);" data-sk="all"><span class="min-price">全部</span></a>');
         	 $('li#nav_name').html('全部');
@@ -478,7 +499,7 @@
         	 
         	 
         	 
-        	 var cjquestions = helpservice.findPublicHelps(1,0,10);
+        	 var cjquestions = myrts['cjquestions'];
         	 var questions = cjquestions.get('result');
         	 if(questions){
         		 for(var i=0; i<questions.size(); i++)
@@ -487,7 +508,7 @@
         			 }
         	 }
         	 
-        	 var newhelps = helpservice.findPublicHelps(0,0,10);
+        	 var newhelps = myrts['newhelps'];
         	 var nhelps = newhelps.get('result');
         	 if(nhelps){
         		 for(var i=0; i<nhelps.size(); i++){

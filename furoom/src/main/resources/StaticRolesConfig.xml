@@ -16,7 +16,8 @@
 	<!-- 匿名用户 -->
 	<Role id="anonymous" privilege = "-1" limitedType="0" extendsRoleIds="">
 		<permissionRules>
-			<PermissionRule  entityLimitType="weixin.service.ITestService"/>
+			<PermissionRule  entityLimitType="com.furoom.remote.batch.IEasyBatchService"/>
+			<PermissionRule  entityLimitType="gpps.cache.service.ICacheService"/>
 			<PermissionRule  entityLimitType="weixin.service.IBindService"/>
 			<PermissionRule  entityLimitType="weixin.service.ICentralService" operations="getOpenId;"/>
 			<PermissionRule  entityLimitType="gpps.token.service.ITokenService" operations="login;isValid;"/>
