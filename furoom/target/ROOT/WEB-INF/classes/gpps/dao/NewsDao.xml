@@ -19,7 +19,7 @@
         </if>
     </select>
 	<select id="findAll" resultType="gpps.model.News">
-		select *
+		select id, title, publishtime, publicType
         from News
         <if test="publicType != -1">
             where publicType=#{publicType}

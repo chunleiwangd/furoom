@@ -14,7 +14,7 @@
 		id=#{orderId}
 	</update>
 	<select id="findByStatesWithPaging" resultType="gpps.model.GovermentOrder">
-		select *
+		select id, title,borrowerId,state,financingStarttime,financingEndtime,createtime,incomeStarttime,lastModifytime,financingRequestId, formalName, formalLevel, formalAmount, tenderUnits, formalLink
 		from GovermentOrder
 		<if test="states != null">
 			where state in
@@ -30,7 +30,7 @@
 		LIMIT #{offset}, #{recnum}
 	</select>
 	<select id="findByStates" resultType="gpps.model.GovermentOrder">
-		select *
+		select id, title,borrowerId,state,financingStarttime,financingEndtime,createtime,incomeStarttime,lastModifytime,financingRequestId, formalName, formalLevel, formalAmount, tenderUnits, formalLink
 		from GovermentOrder
 		<if test="states != null">
 			where state in
@@ -59,7 +59,7 @@
         </if>
 	</select>
 	<select id="findByBorrowerIdAndState" resultType="gpps.model.GovermentOrder">
-		select *
+		select id, title,borrowerId,state,financingStarttime,financingEndtime,createtime,incomeStarttime,lastModifytime,financingRequestId, formalName, formalLevel, formalAmount, tenderUnits, formalLink
 		from GovermentOrder where borrowerId=#{borrowerId}
 		<if test="states != null">
 			and state
@@ -74,6 +74,12 @@
         </if>
 		order by state asc,createtime desc 
 	</select>
+	
+	<select id="findLight" parameterType="Integer" resultType="gpps.model.GovermentOrder">
+		select id, title,borrowerId,state,financingStarttime,financingEndtime,createtime,incomeStarttime,lastModifytime,financingRequestId, formalName, formalLevel, formalAmount, tenderUnits, formalLink
+		from GovermentOrder where id=#{id}
+	</select>
+	
 	<select id="find" parameterType="Integer" resultType="gpps.model.GovermentOrder">
 		select *
 		from GovermentOrder where id=#{id}
@@ -99,7 +105,7 @@
         LIMIT 0,1
     </select>
     <select id="findAllUnpublishOrders" resultType="gpps.model.GovermentOrder">
-        select *
+        select id, title,borrowerId,state,financingStarttime,financingEndtime,createtime,incomeStarttime,lastModifytime,financingRequestId, formalName, formalLevel, formalAmount, tenderUnits, formalLink
         from GovermentOrder where state=0
         order by createtime asc 
     </select>

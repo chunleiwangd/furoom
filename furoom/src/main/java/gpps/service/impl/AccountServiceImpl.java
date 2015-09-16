@@ -195,6 +195,22 @@ public class AccountServiceImpl implements IAccountService {
 	}
 	
 	@Override
+	public Integer returnMoneyForTempDebt(Integer lenderId, Integer borrowerId, BigDecimal amount, String description) throws Exception{
+		CashStream cs = new CashStream();
+		cs.setAction(CashStream.ACTION_TEMPDEBT);
+		cs.setState(CashStream.STATE_INIT);
+		cs.setBorrowerAccountId(borrowerId);
+		cs.setLenderAccountId(lenderId);
+		cs.setChiefamount(amount);
+		cs.setInterest(BigDecimal.ZERO);
+		cs.setCreatetime(System.currentTimeMillis());
+		cs.setDescription(description);
+		cashStreamDao.create(cs);
+		recordStateLogWithCreate(cs);
+		return cs.getId();
+	}
+	
+	@Override
 	public Integer freezeBorrowerAccount(Integer borrowerAccountId, BigDecimal chiefAmount, BigDecimal interest, Integer submitId, Integer paybackId, String description) throws InsufficientBalanceException {
 		BorrowerAccount borrowerAccount=checkNullObject(BorrowerAccount.class, borrowerAccountDao.find(borrowerAccountId));
 		if(chiefAmount.add(interest).compareTo(borrowerAccount.getUsable())>0)
@@ -428,6 +444,11 @@ public class AccountServiceImpl implements IAccountService {
 				case CashStream.ACTION_PURCHASEBACK:
 					lenderAccountDao.purchaseBack(cashStream.getLenderAccountId(), cashStream.getChiefamount(), cashStream.getInterest());
 					borrowerAccountDao.purchaseBack(cashStream.getBorrowerAccountId(), cashStream.getChiefamount().negate(), cashStream.getInterest().negate());
+					break;
+				case CashStream.ACTION_TEMPDEBT:
+					//短期借债的还款行为相当于借款方提现，出借方充值
+					lenderAccountDao.recharge(cashStream.getLenderAccountId(), cashStream.getChiefamount());
+					borrowerAccountDao.cash(cashStream.getBorrowerAccountId(), cashStream.getChiefamount());
 					break;
 				case CashStream.ACTION_SYNCHRONIZE:
 					lenderAccountDao.repay(cashStream.getLenderAccountId(), cashStream.getChiefamount(), cashStream.getInterest());

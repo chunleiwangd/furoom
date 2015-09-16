@@ -1,5 +1,7 @@
 package com.furoom.remote.core;
 
+import gpps.model.Lender;
+
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -7,6 +9,7 @@ import java.lang.reflect.Method;
 import javax.el.MethodNotFoundException;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -30,14 +33,23 @@ public class EasyBatchServiceImp implements IEasyBatchService {
 	IAuthorityValidateService authorityValidateService;
 	@Autowired
 	IRemoteServiceRegister register;
+	
+	Logger log = Logger.getLogger(EasyBatchServiceImp.class);
+	
 	public Object[] batchCall(SingleRequest[] requests) throws PermissionException, MethodNotFoundException {
 
+		
 		 HttpSession session=((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
 		 
 		 Object user = null;
 		 
 		 if(session!=null)
 			user=session.getAttribute(FuRoomConstant.SESSION_ATTRIBUTENAME_USER);
+		 
+//		 String userid = user==null ? "anonymous" : ((Lender)user).getId().toString();
+//		 String param = (requests==null || requests.length==0)?"none":requests[2].method;
+//		 log.info(userid+"调用batchcall,调用方法为"+param);
+		 
 		 
 		if(authorityValidateService!=null)
 		{

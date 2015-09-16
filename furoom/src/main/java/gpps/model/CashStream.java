@@ -18,6 +18,7 @@ public class CashStream {
 	public static final int ACTION_PURCHASEBACK=10;
 	public static final int ACTION_PURCHASE=11;
 	public static final int ACTION_SYNCHRONIZE=12;  //回购企业账户额度同步
+	public static final int ACTION_TEMPDEBT=13;     //短期拆借还款
 	private int action;
 	private long createtime = System.currentTimeMillis();
 	private Integer lenderAccountId;

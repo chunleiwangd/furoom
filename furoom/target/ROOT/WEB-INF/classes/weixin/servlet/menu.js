@@ -6,20 +6,42 @@
            {	
                "type":"view",
                "name":"我的账户",
-               "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdd002cd13f660e62&redirect_uri=http%3A%2F%2Fwww.zhengcaidai.com%2Fweixin_myaccount.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
+               "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdd002cd13f660e62&redirect_uri=http://www.zhengcaidai.com/weixin/controller/myaccount&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
             },{	
                "type":"view",
                "name":"债权转让",
-               "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdd002cd13f660e62&redirect_uri=http%3A%2F%2Fwww.zhengcaidai.com%2Fweixin_myaccountdetail.html%3Ffid%3Dpurchase&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
+               "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdd002cd13f660e62&redirect_uri=http://www.zhengcaidai.com/weixin/controller/exchange&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
             },
             {
                "type":"view",
                "name":"站内信",
-               "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdd002cd13f660e62&redirect_uri=http%3A%2F%2Fwww.zhengcaidai.com%2Fweixin_myaccountdetail.html%3Ffid%3Dletter&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
+               "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdd002cd13f660e62&redirect_uri=http://www.zhengcaidai.com/weixin/controller/letter&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
             },{
             	"type" : "view",
-            	"name" : "绑定",
-            	"url" : "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdd002cd13f660e62&redirect_uri=http%3A%2F%2Fwww.zhengcaidai.com%2Fweixin_bind.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
+            	"name" : "账户绑定",
+            	"url" : "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdd002cd13f660e62&redirect_uri=http://www.zhengcaidai.com/weixin/controller/bind&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
+            },{
+            	"type" : "view",
+            	"name" : "解除绑定",
+            	"url" : "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdd002cd13f660e62&redirect_uri=http://www.zhengcaidai.com/weixin/controller/unbind&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
+            }]
+       },
+       {
+           "name":"产品中心",
+           "sub_button":[
+           {	
+               "type":"click",
+               "name":"预约中产品",
+               "key":"key_006"
+            },{	
+               "type":"click",
+               "name":"投标中产品",
+               "key":"key_007"
+            },
+            {
+               "type":"click",
+               "name":"其他",
+               "key":"key_008"
             }]
        },
        {
@@ -29,7 +51,27 @@
                "type":"view",
                "name":"查看测试",
                "url":"https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxdd002cd13f660e62&redirect_uri=http://www.zhengcaidai.com/weixin_cb.html&response_type=code&scope=snsapi_base&state=123#wechat_redirect"
-            }]
+            },
+            {
+                "type":"click",
+                "name":"系统公告",
+                "key":"key_009"
+             },
+             {
+                 "type":"click",
+                 "name":"春蕾活动",
+                 "key":"key_010"
+              },
+              {
+                  "type":"click",
+                  "name":"新闻资讯",
+                  "key":"key_011"
+               },
+               {
+                   "type":"click",
+                   "name":"关于我们",
+                   "key":"key_012"
+                }]
        }
       	]
  }

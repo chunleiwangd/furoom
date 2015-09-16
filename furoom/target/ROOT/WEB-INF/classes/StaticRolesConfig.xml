@@ -16,14 +16,15 @@
 	<!-- 匿名用户 -->
 	<Role id="anonymous" privilege = "-1" limitedType="0" extendsRoleIds="">
 		<permissionRules>
-			<PermissionRule  entityLimitType="weixin.service.ITestService"/>
+			<PermissionRule  entityLimitType="com.furoom.remote.batch.IEasyBatchService"/>
+			<PermissionRule  entityLimitType="gpps.cache.service.ICacheService"/>
 			<PermissionRule  entityLimitType="weixin.service.IBindService"/>
 			<PermissionRule  entityLimitType="weixin.service.ICentralService" operations="getOpenId;"/>
 			<PermissionRule  entityLimitType="gpps.token.service.ITokenService" operations="login;isValid;"/>
 			<PermissionRule  entityLimitType="gpps.service.ILenderService" operations="register;registerSecondStep;getCurrentUser;login;sendMessageValidateCode;isLoginIdExist;isPhoneNumberExist;isIdentityCardExist;isEmailExist;getProcessedTel;changePassword;findByLoginId;isCodeRight;loginOut"/>
 			<PermissionRule  entityLimitType="gpps.service.IAdminService" operations="register;registerSecondStep;getCurrentUser;login;sendMessageValidateCode;isLoginIdExist;isPhoneNumberExist;isIdentityCardExist;isEmailExist;getProcessedTel"/>
-			<PermissionRule  entityLimitType="gpps.service.IBorrowerService" operations="find;register;getCurrentUser;login;sendMessageValidateCode;isLoginIdExist;isPhoneNumberExist;isIdentityCardExist;isEmailExist;getProcessedTel;changePassword;findByLoginId;purchaserlogin"/>
-			<PermissionRule  entityLimitType="gpps.service.IGovermentOrderService" operations="findByStates;findByBorrowerIdAndStates;findGovermentOrderByProductSeries;findNPByStatesByPage;findByStatesByPage;findGovermentOrderByProduct;findMimeItems;"/>
+			<PermissionRule  entityLimitType="gpps.service.IBorrowerService" operations="find;register;getCurrentUser;login;sendMessageValidateCode;isLoginIdExist;isPhoneNumberExist;isIdentityCardExist;isEmailExist;getProcessedTel;changePassword;findByLoginId;purchaserlogin;findByProductId"/>
+			<PermissionRule  entityLimitType="gpps.service.IGovermentOrderService" operations="findByStates;findByBorrowerIdAndStates;findGovermentOrderByProductSeries;findNPByStatesByPage;findByStatesByPage;findGovermentOrderByProduct;findMimeItems"/>
 			<PermissionRule  entityLimitType="gpps.service.IProductService" operations="find;findByGovermentOrder;findByStates;findByProductSeriesAndStates;findNewLenderProductByStates;findByProductId;findMimeItems"/>
 			<PermissionRule  entityLimitType="gpps.service.IActivityService" operations="find;findByState;findMimeItem"/>
 			<PermissionRule  entityLimitType="gpps.service.IActivityRefService" operations="find;findByActivity;applyActivityByAnonymous;isApply"/>

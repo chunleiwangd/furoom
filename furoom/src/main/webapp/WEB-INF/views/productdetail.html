@@ -10,8 +10,7 @@
     
     <link href="css/bootstrap.min.css" rel="stylesheet">
     
-    <link href="css/plist/a.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/gpps/lufax-main.css">
+    <link href="css/plist/b.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/gpps/new-lufax.css">
     <link rel="stylesheet" type="text/css" href="css/gpps/detail/productDetail.css">
     <link href="css/mine.css" rel="stylesheet">
@@ -20,21 +19,16 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/ie-emulation-modes-warning.js"></script>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="js/cdn/html5shiv.min.js"></script>
-      <script src="js/cdn/respond.min.js"></script>
-    <![endif]-->
-    
     <script src="js/tool.js"></script>
-<script src="js/include/include.js?version=20150709"></script>
-<script src="js/getuser.js?version=20150709"></script>
+	<script src="js/include/include_productdetail.js"></script>
+	<script src="js/getuser.js"></script>
     
     <script>
 	var pid = getQueryString('pid');
 	
 	var order = null;
 	var borrower = null;
+	var allseries = null;
 	var series = null;
 	var product = null;
 	var paybacks = null;
@@ -45,45 +39,45 @@
 	var isNewProduct = false;
 	
 	
+	
+	var myctx = FuRoomClient.newContext(); 
+	var bs =  new FuRoomClient.BatchCall(myctx);
+	bs.add('allseries','gpps.cache.service.ICacheService','findAllSeries'); 
+	bs.add('helps','gpps.cache.service.ICacheService','findPublicHelps', [1]); 
+	bs.add('product', 'gpps.service.IProductService', 'find', [parseInt(pid)])
+	bs.add('order', 'gpps.service.IGovermentOrderService', 'findGovermentOrderByProduct', [parseInt(pid)]);
+	bs.add('borrower', 'gpps.service.IBorrowerService', 'findByProductId', [parseInt(pid)]);
+	bs.add('submits', 'gpps.service.ISubmitService', 'findPayedSubmitsByProduct', [parseInt(pid),0,5]);
+	bs.add('paybacks', 'gpps.service.IPayBackService', 'findAll', [parseInt(pid)]);
+	bs.add('count', 'gpps.service.ISubscribeService', 'countSubscribe', [parseInt(pid), -1]);
+	var myrts = new Array();
 	try{
- 		order = orderService.findGovermentOrderByProduct(parseInt(pid));
- 	}catch(e){
- 		
- 	}
+		myrts = bs.execute();//这里的myrts和构建BatchCall时候传入的ctx一样。 
+	}catch(e){
+		alert(e.message);
+	}
+	
+
+ 	order = myrts['order'];
+ 	product = myrts['product'];
+ 	series = product.productSeries;
+ 	borrower = myrts['borrower'];
+ 	allseries = myrts['allseries'];
+ 	submits = myrts['submits'];
+ 	paybacks = myrts['paybacks'];
+ 	
  	
  	if( (usertype=='borrower' && user.id==order.borrowerId) || usertype=='admin'){
  		window.location.href="productdetailfb.html?pid="+pid;
   	}
 	
-	try{
-	for(var i=0; i<order.products.size(); i++){
-		if(order.products.get(i).id==parseInt(pid)){
-			product = order.products.get(i);
-			break;
-		}
-	}
-	
-	
-	borrower = bservice.find(order.borrowerId);
-	series = seriesService.find(product.productseriesId);
-	
-	submits = submitService.findPayedSubmitsByProduct(product.id, 0, 5);
-	
-	var allseries = seriesService.findAll();
 	for(var i=0; i<allseries.size(); i++){
 		seriesname[allseries.get(i).id] = allseries.get(i);
 	}
 	
-	
 	//产品类型为进取型并且购买级别为0，说明是新手单
 	if(seriesname[product.productseriesId].type==2 && product.levelToBuy==0){
 		isNewProduct = true;
-	}
-
-	paybacks = paybackService.findAll(product.id);
-	
-	}catch(e){
-		
 	}
     </script>
     
@@ -444,7 +438,7 @@
  	
  	
  	
- 	var cjquestions = helpservice.findPublicHelps(1,0,10);
+ 	var cjquestions = myrts['helps'];
 	 var questions = cjquestions.get('result');
 	 if(questions){
 		 for(var i=0; i<questions.size(); i++)
@@ -522,7 +516,7 @@
  	//	$('#inputAmount').css('display', 'none');
  	//	$('#inputAmount').html('');
  		//$('#dt_div').css('display', 'none');
- 		var count = subscribeService.countSubscribe(parseInt(pid), -1);
+ 		var count = myrts['count'];
  		$('#detailDate').html('已预约<span class="orange" style="padding-left:5px;">'+count+'</span>人次');
  	}
  	else if(product.state==1 && (parseInt(product.expectAmount.value)-parseInt(product.realAmount.value))==0){

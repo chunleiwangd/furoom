@@ -1,0 +1,21 @@
+document.write("<META HTTP-EQUIV='nocache' CONTENT='no-cache'>");
+document.write("<script type='text/javascript' src='/resources/FuRoomClient.js'></script>");
+document.write("<script type='text/javascript' src='/furoom/gpps.service.IMyAccountService?json'></script>");
+document.write("<script type='text/javascript' src='/furoom/gpps.service.IProductActionService?json'></script>");
+document.write("<script type='text/javascript' src='/furoom/gpps.service.IBorrowerService?json'></script>");
+document.write("<script type='text/javascript' src='/furoom/gpps.dao.ILenderAccountDao?json'></script>");
+document.write("<script type='text/javascript' src='/furoom/gpps.service.ISubscribeService?json'></script>");
+document.write("<script type='text/javascript' src='/furoom/gpps.service.ISubmitService?json'></script>");
+document.write("<script type='text/javascript' src='/furoom/gpps.service.thirdpay.IThirdPaySupportService?json'></script>");
+document.write("<script type='text/javascript' src='/furoom/gpps.service.IGovermentOrderService?json'></script>");
+
+document.write("<script>");
+document.write("var myaccountService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IMyAccountService');");
+document.write("var productActionService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IProductActionService');");
+document.write("var accountDao = FuRoomClient.getRemoteProxy('/furoom/gpps.dao.ILenderAccountDao');");
+document.write("var bservice = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IBorrowerService');");
+document.write("var subscribeService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.ISubscribeService');");
+document.write("var submitService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.ISubmitService');");
+document.write("var tpservice = FuRoomClient.getRemoteProxy('/furoom/gpps.service.thirdpay.IThirdPaySupportService');");
+document.write("var orderService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IGovermentOrderService');");
+document.write("</script>");

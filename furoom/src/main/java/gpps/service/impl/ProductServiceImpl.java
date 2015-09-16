@@ -150,7 +150,7 @@ public class ProductServiceImpl implements IProductService {
 			return new ArrayList<Product>(0);
 		for(Product product:products)
 		{
-			product.setGovermentOrder(govermentOrderDao.find(product.getGovermentorderId()));
+			product.setGovermentOrder(govermentOrderDao.findLight(product.getGovermentorderId()));
 		}
 		return products; 
 	}
@@ -193,7 +193,7 @@ public class ProductServiceImpl implements IProductService {
 			return new ArrayList<Product>(0);
 		for(Product product:products)
 		{
-			product.setGovermentOrder(govermentOrderDao.find(product.getGovermentorderId()));
+			product.setGovermentOrder(govermentOrderDao.findLight(product.getGovermentorderId()));
 		}
 		return products; 
 	}

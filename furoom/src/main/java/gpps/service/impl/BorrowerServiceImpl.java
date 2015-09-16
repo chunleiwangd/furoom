@@ -229,6 +229,21 @@ public class BorrowerServiceImpl extends AbstractLoginServiceImpl implements IBo
 		throw new IllegalConvertException();
 	}
 
+	
+	@Override
+	public Borrower findByProductId(int id){
+		Product pro = productDao.find(id);
+		if(pro==null){
+			return null;
+		}
+		GovermentOrder order = govermentOrderDao.find(pro.getGovermentorderId());
+		if(order==null){
+			return null;
+		}
+		Borrower borrower = find(order.getBorrowerId());
+		return borrower;
+	}
+	
 	@Override
 	public Borrower find(int id) {
 		Borrower borrower = borrowerDao.find(id);

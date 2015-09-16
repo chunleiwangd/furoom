@@ -1,85 +1,86 @@
-document.write("<META HTTP-EQUIV='nocache' CONTENT='no-cache'>");
+function include(path){ 
+    var a=$('<script></script>')
+    a.attr("type","text/javascript"); 
+    a.attr('src',path); 
+   $('head').append(a);
+}
 
 
-document.write("<script type='text/javascript' src='/resources/FuRoomClient.js'></script>");
+include('/resources/FuRoomClient.js');
 
-document.write("<script type='text/javascript' src='/furoom/gpps.service.ILenderService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.IBorrowerService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.IProductSeriesService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.IGovermentOrderService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.IProductService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.INoticeService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.INewsService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.IStatisticsService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.IMyAccountService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.IActivityRefService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.IActivityService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.IAdminService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.IHelpService?json'></script>");
+include('/furoom/gpps.service.ILenderService?json');
+include('/furoom/gpps.service.IBorrowerService?json');
+include('/furoom/gpps.service.IProductSeriesService?json');
+include('/furoom/gpps.service.IGovermentOrderService?json');
+include('/furoom/gpps.service.IProductService?json');
+include('/furoom/gpps.service.INoticeService?json');
+include('/furoom/gpps.service.INewsService?json');
+include('/furoom/gpps.service.IStatisticsService?json');
+include('/furoom/gpps.service.IMyAccountService?json');
+include('/furoom/gpps.service.IActivityRefService?json');
+include('/furoom/gpps.service.IActivityService?json');
+include('/furoom/gpps.service.IAdminService?json');
+include('/furoom/gpps.service.IHelpService?json');
 
-document.write("<script type='text/javascript' src='/furoom/gpps.service.IAccountService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.ISubmitService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.IPayBackService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.ILetterService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.thirdpay.IThirdPaySupportService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.IPurchaseService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.dao.ILenderAccountDao?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.dao.IBorrowerAccountDao?json'></script>");
+include('/furoom/gpps.service.IAccountService?json');
+include('/furoom/gpps.service.ISubmitService?json');
+include('/furoom/gpps.service.IPayBackService?json');
+include('/furoom/gpps.service.ILetterService?json');
+include('/furoom/gpps.service.thirdpay.IThirdPaySupportService?json');
+include('/furoom/gpps.service.IPurchaseService?json');
+include('/furoom/gpps.dao.ILenderAccountDao?json');
+include('/furoom/gpps.dao.IBorrowerAccountDao?json');
 
-document.write("<script type='text/javascript' src='/furoom/gpps.token.service.ITokenService?json'></script>");
+include('/furoom/gpps.token.service.ITokenService?json');
 
-document.write("<script type='text/javascript' src='/furoom/gpps.service.IContractService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.IInviteService?json'></script>");
+include('/furoom/gpps.service.IContractService?json');
+include('/furoom/gpps.service.IInviteService?json');
 
-document.write("<script type='text/javascript' src='/furoom/gpps.dao.IGovermentOrderDao?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.IWaitToDoStatisticsService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.message.IMessageSupportService?json'></script>");
+include('/furoom/gpps.dao.IGovermentOrderDao?json');
+include('/furoom/gpps.service.IWaitToDoStatisticsService?json');
+include('/furoom/gpps.service.message.IMessageSupportService?json');
 
-document.write("<script type='text/javascript' src='/furoom/gpps.service.IProductActionService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/gpps.service.ISubscribeService?json'></script>");
-//document.write("<script type='text/javascript' src='/furoom/gpps.dao.ISubscribeDao?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/weixin.service.IBindService?json'></script>");
-document.write("<script type='text/javascript' src='/furoom/weixin.service.ICentralService?json'></script>");
+include('/furoom/gpps.service.IProductActionService?json');
+include('/furoom/gpps.service.ISubscribeService?json');
+//include('/furoom/gpps.dao.ISubscribeDao?json');
+include('/furoom/weixin.service.IBindService?json');
+include('/furoom/weixin.service.ICentralService?json');
 
 
     				
-document.write("<script>");
-document.write("var service = FuRoomClient.getRemoteProxy('/furoom/gpps.service.ILenderService');");
-document.write("var bservice = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IBorrowerService');");
-document.write("var myaccountService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IMyAccountService');");
-document.write("var orderService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IGovermentOrderService');");
-document.write("var productService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IProductService');");
-document.write("var seriesService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IProductSeriesService');");
-document.write("var accountDao = FuRoomClient.getRemoteProxy('/furoom/gpps.dao.ILenderAccountDao');");
-document.write("var baccountDao = FuRoomClient.getRemoteProxy('/furoom/gpps.dao.IBorrowerAccountDao');");
-document.write("var noticeService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.INoticeService');");
-document.write("var newsService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.INewsService');");
-document.write("var statisticService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IStatisticsService');");
-document.write("var refservice = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IActivityRefService');");
-document.write("var actService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IActivityService');");
-document.write("var adminService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IAdminService');");
-document.write("var helpservice = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IHelpService');");
+var service = FuRoomClient.getRemoteProxy('/furoom/gpps.service.ILenderService');
+var bservice = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IBorrowerService');
+var myaccountService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IMyAccountService');
+var orderService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IGovermentOrderService');
+var productService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IProductService');
+var seriesService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IProductSeriesService');
+var accountDao = FuRoomClient.getRemoteProxy('/furoom/gpps.dao.ILenderAccountDao');
+var baccountDao = FuRoomClient.getRemoteProxy('/furoom/gpps.dao.IBorrowerAccountDao');
+var noticeService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.INoticeService');
+var newsService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.INewsService');
+var statisticService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IStatisticsService');
+var refservice = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IActivityRefService');
+var actService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IActivityService');
+var adminService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IAdminService');
+var helpservice = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IHelpService');
 
-document.write("var tpservice = FuRoomClient.getRemoteProxy('/furoom/gpps.service.thirdpay.IThirdPaySupportService');");
-document.write("var paybackService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IPayBackService');");
-document.write("var accountService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IAccountService');");
-document.write("var paybackService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IPayBackService');");
-document.write("var letterService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.ILetterService');");
-document.write("var submitService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.ISubmitService');");
-document.write("var purchaseService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IPurchaseService');");
+var tpservice = FuRoomClient.getRemoteProxy('/furoom/gpps.service.thirdpay.IThirdPaySupportService');
+var paybackService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IPayBackService');
+var accountService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IAccountService');
+var paybackService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IPayBackService');
+var letterService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.ILetterService');
+var submitService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.ISubmitService');
+var purchaseService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IPurchaseService');
 
-document.write("var tokenService = FuRoomClient.getRemoteProxy('/furoom/gpps.token.service.ITokenService');");
-document.write("var inviteService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IInviteService');");
-document.write("var contractService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IContractService');");
+var tokenService = FuRoomClient.getRemoteProxy('/furoom/gpps.token.service.ITokenService');
+var inviteService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IInviteService');
+var contractService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IContractService');
 
-document.write("var toService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IWaitToDoStatisticsService');");
-document.write("var orderDao = FuRoomClient.getRemoteProxy('/furoom/gpps.dao.IGovermentOrderDao');");
-document.write("var messageService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.message.IMessageSupportService');");
-document.write("var productActionService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IProductActionService');");
-document.write("var subscribeService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.ISubscribeService');");
-//document.write("var subscribeDao = FuRoomClient.getRemoteProxy('/furoom/gpps.dao.ISubscribeDao');");
-document.write("var bindService = FuRoomClient.getRemoteProxy('/furoom/weixin.service.IBindService');");
-document.write("var centralService = FuRoomClient.getRemoteProxy('/furoom/weixin.service.ICentralService');");
-
-
-document.write("</script>");
+var toService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IWaitToDoStatisticsService');
+var orderDao = FuRoomClient.getRemoteProxy('/furoom/gpps.dao.IGovermentOrderDao');
+var messageService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.message.IMessageSupportService');
+var productActionService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.IProductActionService');
+var subscribeService = FuRoomClient.getRemoteProxy('/furoom/gpps.service.ISubscribeService');
+//var subscribeDao = FuRoomClient.getRemoteProxy('/furoom/gpps.dao.ISubscribeDao');
+var bindService = FuRoomClient.getRemoteProxy('/furoom/weixin.service.IBindService');
+var centralService = FuRoomClient.getRemoteProxy('/furoom/weixin.service.ICentralService');

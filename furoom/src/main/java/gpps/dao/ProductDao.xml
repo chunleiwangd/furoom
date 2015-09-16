@@ -14,7 +14,7 @@
 		id=#{id}
 	</update>
 	<select id="find" parameterType="Integer" resultType="gpps.model.Product">
-		select id,state,govermentorderId,expectAmount,realAmount,rate,paybackmodel,productseriesId,levelToBuy,createtime,minimum,description,incomeEndtime,miniAdd
+		select *
 		from Product where id=#{id}
 	</select>
 	<select id="findByGovermentOrder" parameterType="Integer"

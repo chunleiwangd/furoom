@@ -31,9 +31,8 @@
 		<script>
 		var force = getQueryString('force');
 		var rb = getQueryString('rb');
-		if(force!='1'){
-		
-		if (window.applicationCache) {
+		/* if(force!='1'){
+		 if (window.applicationCache) {
 	        var loginId = localStorage.getItem("loginId");
 	        var token = localStorage.getItem("token");
 	        if(loginId!=null && token!=null){
@@ -42,9 +41,8 @@
 	        	else
 	        		window.location.href="login_pre.html";
 	        }
-	    }
-		
-		}
+	    } 
+		} */
 		</script>
   </head>
 
@@ -83,7 +81,7 @@
         </div>
         </div>
         <div class="row" style="margin-top:10px;">
-        <button id="J-login-btn" class="btn btn-lg btn-success btn-block">登陆</button>
+        <button id="J-login-btn" class="btn btn-lg btn-success btn-block">登录</button>
         </div>
       </div>
       
@@ -161,10 +159,19 @@ $(document).ready(function() {
 			try{
 			var token = service.login(username, password, validate);
 			
-			if (window.applicationCache) {
+			/*  if (window.applicationCache) {
+				try{
 		        localStorage.setItem("loginId", username);
 		        localStorage.setItem("token", token);
-		    }
+				}catch(e){
+					if(e.name == 'QuotaExceededError'){
+						//清空后再设置
+						localStorage.clear();
+						localStorage.setItem("loginId", username);
+				        localStorage.setItem("token", token);
+						}
+				}
+		    } */
 			
 			if(rb!=null)
 				window.location.href=rb;

@@ -8,39 +8,23 @@
     <meta name="renderer" content="webkit">
     <title>政采贷 > 投资中心</title>
     <meta name="keywords" content="政采贷">
-    <!-- Bootstrap core CSS -->
-    
-    
-    
-    
     
     <link href="css/bootstrap.min.css" rel="stylesheet">
     
-    <link rel="stylesheet" type="text/css" href="css/gpps/lufax-main.css">
     <link rel="stylesheet" type="text/css" href="css/gpps/new-lufax.css">
     <link rel="stylesheet" type="text/css" href="css/gpps/productlist.css">
     
     <link href="css/mine.css" rel="stylesheet">
     
     <link href="css/plist/b.css" rel="stylesheet">
-    <link href="css/plist/creditlevel.css" rel="stylesheet">
-    <link href="css/plist/progressbar.css" rel="stylesheet">
-    
     
     <script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/tool.js"></script>
-<script src="js/data.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/tool.js"></script>
 
-<script src="js/ie-emulation-modes-warning.js"></script>
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="js/cdn/html5shiv.min.js"></script>
-      <script src="js/cdn/respond.min.js"></script>
-    <![endif]-->
-<script src="js/include/include.js?version=20150709"></script>
-<script src="js/getuser.js?version=20150709"></script>
+	<script src="js/ie-emulation-modes-warning.js"></script>
+	<script src="js/include/include_productlist.js"></script>
+	<script src="js/getuser.js"></script>
 </head>
  
 <body>
@@ -54,14 +38,10 @@
     <div class="list-wrap clearfix" class="row">
         <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9" style="padding-left:0px; padding-right:2px;">
         
-        
-        
         <ul class="bcrumb">
         <li><a href="javascript:void(0);">投资中心</a> <span class="divider">&gt;</span></li>
         <li id="nav_name" class="active"></li>
     	</ul>
-    	
-    	
     	
     	<nav class="navbar navbar-default" role="navigation" style="margin-bottom:0px;">
     	<div class="container-fluid">
@@ -366,7 +346,20 @@
         	 header('productlist');
         	 var sid = getQueryString('sid');
         	 
-        	 var series = seriesService.findAll();
+        	 
+        		var myctx = FuRoomClient.newContext(); 
+        		var bs =  new FuRoomClient.BatchCall(myctx);
+        		bs.add('series','gpps.cache.service.ICacheService','findAllSeries'); 
+        		bs.add('cjquestions', 'gpps.cache.service.ICacheService', 'findPublicHelps',[1]);
+        		bs.add('newhelps', 'gpps.cache.service.ICacheService', 'findPublicHelps', [0]);
+        		var myrts = new Array();
+        		try{
+        		myrts = bs.execute();//这里的myrts和构建BatchCall时候传入的ctx一样。 
+        		}catch(e){
+        			alert(e.message);
+        		}
+        	 
+        	 var series = myrts['series'];
         	 var li1 = $('<li class="active"></li>');
         	 var a1 = $('<a href="javascript:void(0);" data-sk="all"><span class="min-price">全部</span></a>');
         	 $('li#nav_name').html('全部');
@@ -478,7 +471,7 @@
         	 
         	 
         	 
-        	 var cjquestions = helpservice.findPublicHelps(1,0,10);
+        	 var cjquestions = myrts['cjquestions'];
         	 var questions = cjquestions.get('result');
         	 if(questions){
         		 for(var i=0; i<questions.size(); i++)
@@ -487,7 +480,7 @@
         			 }
         	 }
         	 
-        	 var newhelps = helpservice.findPublicHelps(0,0,10);
+        	 var newhelps = myrts['newhelps'];
         	 var nhelps = newhelps.get('result');
         	 if(nhelps){
         		 for(var i=0; i<nhelps.size(); i++){
@@ -495,20 +488,11 @@
         		 }
         	 }
         	 
-        	 
-        	 
-        	 
-        	 
-        	 
-        	 
-        	 //a1.trigger('click');
         	 if(sid==null){
         		 a1.trigger('click');
         	 }else{
-        	 $('a#'+sid).trigger('click');
+        	 	$('a#'+sid).trigger('click');
         	 }
-        	 
-        	 
          });
          </script>
     </body>

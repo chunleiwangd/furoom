@@ -39,6 +39,11 @@ public class CheckProduct {
 		black.add(6);
 		black.add(16);
 		black.add(18);
+		black.add(11);
+		black.add(22);
+		black.add(3);
+		black.add(5);
+		black.add(9);
 		
 		int total = 0;
 		int success = 0;

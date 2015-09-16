@@ -53,8 +53,8 @@ public class CheckSingleCashStream {
 	public static void main(String args[]) throws Exception{
 //		withdrawSingleCashStream("LN19029242014122113491557888");
 		
-		Date datestart = new Date(2015-1900,7-1,17,8,0,0);
-		Date dateend = new Date(2015-1900,7-1,20,8,0,0);
+		Date datestart = new Date(2015-1900,9-1,8,8,0,0);
+		Date dateend = new Date(2015-1900,9-1,15,8,0,0);
 		
 		long start = DateCalculateUtils.getStartTime(datestart.getTime());
 		long end = DateCalculateUtils.getEndTime(dateend.getTime())+1000;
@@ -166,7 +166,7 @@ public class CheckSingleCashStream {
 		}
 		else if(cashStream.getAction()==CashStream.ACTION_CASH){
 			flag = checkWithDrawResult(cashStream, body);
-		}else if(cashStream.getAction()==CashStream.ACTION_REPAY || cashStream.getAction()==CashStream.ACTION_PURCHASEBACK){
+		}else if(cashStream.getAction()==CashStream.ACTION_REPAY || cashStream.getAction()==CashStream.ACTION_PURCHASEBACK || cashStream.getAction()==CashStream.ACTION_TEMPDEBT){
 			flag = checkPayBackResult(cashStream, body);
 		}else if(cashStream.getAction()==CashStream.ACTION_SYNCHRONIZE){
 			flag = checkSynchronizeResult(cashStream, body);

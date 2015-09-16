@@ -69,6 +69,8 @@ public interface IBorrowerService extends ILoginService {
 	 */
 	public Borrower find(int id);
 	
+	public Borrower findByProductId(int id);
+	
 	public Borrower findByLoginId(String loginId);
 
 	/**

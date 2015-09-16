@@ -33,8 +33,8 @@ public class CheckSingleAccount {
 	private static final String NEWLINE="\r\n";
 	public static void main(String args[]) throws Exception{
 		
-		Integer[] lenderIds = {68, 16, 2, 101, 39, 96, 8, 9, 199, 57, 14, 30};
-		Integer[] borrowerIds = {3};
+		Integer[] lenderIds = {2, 6, 7, 202, 8, 9, 10, 132, 15, 16, 19, 155, 157, 25, 92, 26, 29, 30, 100, 33, 39, 172, 97, 46, 45, 118, 117, 53, 57};
+		Integer[] borrowerIds = {3, 7, 10};
 		
 		
 		StringBuilder sBuilder = new StringBuilder();
@@ -201,7 +201,7 @@ public class CheckSingleAccount {
 			flag = false;
 			appendMsg(sBuilder, Borrower.class, borrower.getId(), borrower.getThirdPartyAccount(), "账户金额错误,总金额不等于可用金额+冻结金额");
 		}
-		//可用金额=(充值、取现、冻结、解冻)现金流之和+（支付、还款、存零）现金流之和取反
+		//可用金额=(充值、取现、冻结、解冻)现金流之和+（支付、还款、还短期债务、存零）现金流之和取反
 		List<Integer> actions=new ArrayList<Integer>();
 		actions.add(CashStream.ACTION_FREEZE);
 		actions.add(CashStream.ACTION_UNFREEZE);
@@ -212,6 +212,7 @@ public class CheckSingleAccount {
 		actions=new ArrayList<Integer>();
 		actions.add(CashStream.ACTION_PAY);
 		actions.add(CashStream.ACTION_REPAY);
+		actions.add(CashStream.ACTION_TEMPDEBT);
 		actions.add(CashStream.ACTION_STORECHANGE);
 		CashStreamSum sum2=cashStreamDao.sumCashStream(null, borrower.getAccountId(), actions);
 		sum2=(sum2==null)?new CashStreamSum():sum2;
@@ -328,6 +329,7 @@ public class CheckSingleAccount {
 		
 		actions = new ArrayList<Integer>();
 		actions.add(CashStream.ACTION_RECHARGE);
+		actions.add(CashStream.ACTION_TEMPDEBT);
 		CashStreamSum rechargeSum=cashStreamDao.sumCashStream(lender.getAccountId(), null, actions);
 		rechargeSum=(rechargeSum==null)?new CashStreamSum():rechargeSum;
 		

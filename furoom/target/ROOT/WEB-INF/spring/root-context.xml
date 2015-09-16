@@ -15,7 +15,7 @@
 		<property name="ignoreUnresolvablePlaceholders" value="true" />
 		<property name="locations">
 			<list>
-				<value>file:/root/install/apache-tomcat-7.0.56/webapps/ROOT/WEB-INF/spring/conf.properties</value>
+				<value>file:/root/install/tomcat/webapps/ROOT/WEB-INF/spring/conf.properties</value>
 			</list>
 		</property>
 	</bean>

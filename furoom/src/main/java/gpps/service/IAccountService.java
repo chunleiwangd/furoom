@@ -71,6 +71,18 @@ public interface IAccountService {
 	public Integer applyPurchaseBack(Integer lenderId, Integer submitId, BigDecimal chiefAmount, BigDecimal interest, String description) throws Exception;
 	
 	/**
+	 * 对于暂时借债的偿还
+	 * @param lenderId 出借人的ID
+	 * @param borrowerId 借款人的ID
+	 * @Param productId 融资产品对应的ID
+	 * @param amount 债权标的对应的本金
+	 * @param description 债权回购说明
+	 * 
+	 * */
+	public Integer returnMoneyForTempDebt(Integer lenderId, Integer borrowerId, BigDecimal amount, String description) throws Exception;
+	
+	
+	/**
 	 * 购买债权
 	 * @param lenderId 申请人的ID
 	 * @param submitId 债权对应的标的ID

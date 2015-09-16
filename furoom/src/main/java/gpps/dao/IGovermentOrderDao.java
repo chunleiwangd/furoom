@@ -16,6 +16,7 @@ public interface IGovermentOrderDao {
 	public List<GovermentOrder> findByBorrowerIdAndState(@Param("borrowerId")Integer borrowerId,@Param("states")List<Integer> states);
 	public void delete(Integer id);
 	public GovermentOrder find(Integer id);
+	public GovermentOrder findLight(Integer id);
 	public String findAccessory(Integer orderId);
 	public void updateAccessory(@Param("orderId")Integer orderId,@Param("material")String material);
 	
