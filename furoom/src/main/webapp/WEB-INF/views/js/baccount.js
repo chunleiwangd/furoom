@@ -80,7 +80,8 @@ var defaultSettings_noCallBack = {
 			9 : '奖励',
 			10 : '回购',
 			11 : '出售',
-			12 : '账户同步'
+			12 : '账户同步',
+			13 : '临时债还款'
 	}
 	var productstate = {
 			1:'融资中',

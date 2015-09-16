@@ -506,7 +506,7 @@ public class AccountServiceImpl implements IAccountService {
 		List<CashStream> cashStreams=cashStreamDao.findByActionAndState(null, borrower.getAccountId(), action, state, offset, recnum);
 		for(CashStream cashStream:cashStreams)
 		{
-			if(cashStream.getAction()==CashStream.ACTION_PAY||cashStream.getAction()==CashStream.ACTION_REPAY || cashStream.getAction()==CashStream.ACTION_STORECHANGE)
+			if(cashStream.getAction()==CashStream.ACTION_PAY||cashStream.getAction()==CashStream.ACTION_REPAY || cashStream.getAction()==CashStream.ACTION_STORECHANGE || cashStream.getAction()==CashStream.ACTION_TEMPDEBT)
 			{
 				cashStream.setChiefamount(cashStream.getChiefamount().negate());
 				cashStream.setInterest(cashStream.getInterest().negate());
