@@ -1,4 +1,11 @@
 阿里云安装
+
+0.挂载硬盘到/root/install/data目录上
+
+
+
+
+
 1.安装JDK
 安装包:jdk-6u45-linux-x64-rpm.bin
 安装步骤如下：
@@ -8,6 +15,11 @@ chmod a+x jdk-6u45-linux-x64-rpm.bin
 2.安装Mysql
 安装包：MySQL-server-5.6.21-1.rhel5.x86_64.rpm MySQL-client-5.6.21-1.rhel5.x86_64.rpm
 安装步骤如下：
+
+查找以前是否装有mysql 
+命令：rpm -qa|grep -i mysql
+如果有，则删除以前残留文件  yum remove mysql-* 
+
 安装mysql服务器 ：rpm -ivh MySQL-server-5.6.21-1.rhel5.x86_64.rpm  --nodeps
 cp /usr/share/mysql/my-default.cnf /etc/my.cnf
 vim my.cnf  my.cnf配置如下：
@@ -43,11 +55,12 @@ default-character-set = utf8
 重启mysql : 	service mysql stop
 			service mysql start
 
+打开my.cnf在[Mysqld]配置段下去掉： skip-grant-tables  保存退出编辑。
 
 链接mysql ：mysql -u root -p
-Enter password:calis123
+Enter password:calis111
 
-如果需要重设密码的话 ： SET PASSWORD = PASSWORD('123456'); 
+如果需要重设密码的话 ： SET PASSWORD = PASSWORD('calis111'); 
 
 远程访问权限：GRANT ALL PRIVILEGES ON *.* TO root@'%' IDENTIFIED BY 'calis123';
 
@@ -60,7 +73,25 @@ CREATE DATABASE gpps DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
 
-安装tomcat的时候设置tomcat的URIEncoding为UTF-8,修改conf/server.xml中的
+
+安装Tomcat
+1）下载apache-tomcat-7.0.56.tar.gz
+2) ftp上传到服务器上/root/install/data/software目录中
+3）#tar -zxvf apache-tomcat-7.0.56.tar.gz //解压
+4）#cp -R apache-tomcat-7.0.56 /root/install/tomcat；//拷贝apache-tomcat-7.0.56到/root/install/下并重命名为tomcat
+启动tomcat之前要配置一下环境变量，
+export CATALINA_HOME=/root/install/tomcat
+export CATALINE_BASH=/root/install/tomcat
+
+5)设置tomcat的URIEncoding为UTF-8,修改conf/server.xml中的
 <Connector port="80" protocol="HTTP/1.1"
                connectionTimeout="20000"
-               redirectPort="8443" URIEncoding="UTF-8" />
+               redirectPort="8443" URIEncoding="UTF-8"
+                compression="on"
+                compressionMinSize="2048"
+                onCompressionUserAgents="gozilla,traviata"
+                compressableMimeType="text/html,text/xml,application/javascript,text/css,text/plain"/>
+
+6） /root/install/tomcat/bin/startup.sh； //启动tomcat
+/root/install/tomcat/bin/shutdown.sh  关闭tomcat
+
