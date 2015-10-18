@@ -19,6 +19,7 @@ public interface IProductDao {
 	public void create(Product product);
 	public void changeState(@Param("id")Integer id,@Param("state")int state,@Param("lastmodifytime")long lastmodifytime);
 	public Product find(Integer id);
+	
 	public List<Product> findByGovermentOrder(Integer orderId);
 	public List<Product> findByState(@Param("states")List<Integer> states,@Param("offset")int offset,@Param("recnum")int recnum);
 	public int countByState(@Param("states")List<Integer> states);
